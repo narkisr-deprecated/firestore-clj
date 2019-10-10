@@ -5,4 +5,10 @@
       [org.clojure/clojure "1.10.1"]
       [com.google.cloud/google-cloud-firestore "1.13.0"]
   ]
+  :plugins [
+     [lein-cljfmt "0.6.3"]
+     [lein-tag "0.1.0"]
+     [lein-set-version "0.3.0"]
+  ]
+
   :repl-options {:init-ns firestore-clj.core})
