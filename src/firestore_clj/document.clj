@@ -6,6 +6,9 @@
 (defn collection [source coll]
   (.collection source coll))
 
+(defn collection-group [source coll]
+  (.collectionGroup source coll))
+
 (defn document [coll id]
   (.document coll id))
 
