@@ -4,7 +4,7 @@ A google Firestore library for Clojure
 
 # Usage
 
-Check [core.clj]()
+Check [core.clj](https://raw.githubusercontent.com/narkisr/firestore-clj/master/src/firestore_clj/core.clj)
 
 # Copyright and license
 
