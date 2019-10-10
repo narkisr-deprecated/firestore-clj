@@ -4,7 +4,10 @@
    [firestore-clj.query :refer (into-query)]
    [firestore-clj.connection :refer (create-channel connect)]))
 
-(def db (connect (create-channel "10.8.4.102:8086") "foo"))
+(def db (atom nil))
+
+(defn setup []
+  (reset! db (connect (create-channel "10.8.4.102:8086") "foo")))
 
 (def landmarks {:SF [{:site "Golden Gate Bridge" :type "bridge" :cost 0}
                      {:site "Legion of Honor" :type "museum" :cost 5}]
@@ -25,6 +28,7 @@
           (put landmarks site))))))
 
 (comment
-  (populate db)
-  (get (collection (document (collection db "cities") "BJ") "landmarks"))
-  (get (into-query (collection-group db "landmarks") [:type == "museum"] [:cost < 6])))
+  (setup)
+  (populate @db)
+  (get (collection (document (collection @db "cities") "BJ") "landmarks"))
+  (get (into-query (collection-group @db "landmarks") [:type == "museum"] [:cost < 6])))
